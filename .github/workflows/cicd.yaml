@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  paths-ignore:
-    - 'README.md'
-    - 'heml/**'
 
 jobs:
   build:
@@ -59,9 +56,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push Docker image to Docker Hub
-        run: docker push naveenaws19/go-web-app:latest
-
       - name: Build and push Docker image to Docker Hub
         uses: docker/build-push-action@v5
         with:
@@ -79,7 +73,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3 
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN }}
         
 
       - name: Update Helm chart with new Docker image tag
