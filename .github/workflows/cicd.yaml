@@ -36,10 +36,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Run golangci-lint
+    - name: golangci-lint
       uses: golangci/golangci-lint-action@v6
       with:
-        version: v1.56.2
+        version: v1.60.0
 
           
   push:
