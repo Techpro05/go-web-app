@@ -39,8 +39,11 @@ jobs:
 
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v6
+      env:
+        GOTOOLCHAIN: local
       with:
         version: v1.59.1
+        skip-cache: true
 
           
   push:
