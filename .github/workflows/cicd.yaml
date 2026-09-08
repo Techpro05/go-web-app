@@ -32,21 +32,15 @@ jobs:
     env:
        FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 : "true"   
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: 'stable'
-          cache: true
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v6
+      with:
+        version: v1.56.2
 
-      - name: Install golangci-lint
-        run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-
-      - name: Run golangci-lint
-        run: $(go env GOPATH)/bin/golangci-lint run
           
   push:
     runs-on: ubuntu-latest
